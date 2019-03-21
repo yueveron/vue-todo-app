@@ -1,5 +1,7 @@
 # sources
 
+使用 Vue Store 模式管理项目数据，实现 todolist app
+
 ## Project setup
 ```
 npm install
