@@ -4,11 +4,17 @@ var store = {
        list: [
           {
             id: 0,
-            text: 'clean the house'
+            type : 0,
+            data : {
+              text: '标题模块文字'
+            }            
           },
           {
             id: 1,
-            text: 'buy milk'
+            type : 1,
+            data : {
+              text: '段落模块文字'
+            }   
           }
       ]
     },

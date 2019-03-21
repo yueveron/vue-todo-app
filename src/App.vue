@@ -35,6 +35,8 @@ export default {
 </script>
 
 <style lang="scss">
+  * {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+  * {margin: 0; padding: 0; border: 0; list-style: none; outline: 0;}
   body {
     margin: 0;
     padding: 0;
@@ -68,7 +70,7 @@ export default {
     margin-left: 290px;
     position: relative;
     padding: 2.2em 0;
-    max-width: 600px;
+    width: 600px;
     margin: 0 auto;
     padding-left: 50px;
   }

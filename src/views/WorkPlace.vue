@@ -12,14 +12,16 @@
         </div>
 
         <div>
-          <div>
-            <input type="radio" value="One" v-model="picked">
-            <label for="one">One</label>
-            <br>
-            <input type="radio" value="Two" v-model="picked">
-            <label for="two">Two</label>
-            <br>
-            <span>Picked: {{ picked }}</span>
+          <div class="select-module-type">
+            <span>
+              <input type="radio" value=0 v-model="picked">
+              <label for="one">标题模版</label>
+            </span>
+            
+            <span>
+              <input type="radio" value=1 v-model="picked">
+              <label for="two">段落模版</label>
+            </span>
           </div>
           <input type="text" class="text-input" v-model="todoText" v-on:keyup.enter="createNewToDoItem"/>
           <div class="ToDo-Add" @click="createNewToDoItem()">+</div>
@@ -41,7 +43,7 @@ export default {
     return {
       list: this.store.state.list,
       todoText: '',
-      picked: 'One'
+      picked: 0
     }
   },
   methods: {
@@ -52,7 +54,13 @@ export default {
         }
         // newId 必须是唯一值，产生条件：1.查找 item.id 最大值 + 1 产生 2.如果没有任何 item 则为 0
         const newId = Math.max(Math.max.apply(null, this.list.map(t => t.id)) + 1, 0);
-        const newItem = { id: newId, text: this.todoText}
+        const newItem = { 
+          id: newId, 
+          type: this.picked, 
+          data: {
+            text: this.todoText
+          }
+        }
         //
         this.store.mutation.addToList(newItem);
         //
@@ -110,5 +118,8 @@ export default {
     font-size: 1em;
     margin: 10px auto;
     box-shadow: 1px 3px 20px 0px rgba(0, 0, 0, 0.3)
+  }
+  .select-module-type{
+    span{display:inline-block; margin : 5px;}
   }
 </style>

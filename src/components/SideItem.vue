@@ -1,6 +1,6 @@
 <template>
     <li class="SideItem">
-      <p class="text">{{todo.text}}</p>
+      <p class="text">{{todo.data.text}}</p>
     </li>
 </template>
 
