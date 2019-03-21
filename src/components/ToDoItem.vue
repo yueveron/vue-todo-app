@@ -1,6 +1,7 @@
 <template>
     <div class="ToDoItem">
-        <p class="ToDoItem-Text">{{todo.text}}</p>
+        <input class="ToDoItem-Text" v-model="todo.text" placeholder="edit me">
+        <!-- <p class="ToDoItem-Text">{{todo.text}}</p> -->
         <div class="ToDoItem-Delete"
              @click="deleteItem(todo)">-
         </div>
@@ -34,6 +35,7 @@ export default {
     box-shadow: 1px 1px 1px lightgrey;
     padding: 12px;
     margin-right: 10px;
+    margin-bottom : 10px;
 }
 .ToDoItem-Delete {
     width: 20px;

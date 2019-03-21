@@ -4,14 +4,26 @@
       <h1 class="ToDo-Header">Vue To Do</h1>
       <div class="ToDo-Container">
         <div class="ToDo-Content">
-          <TodoItem v-for="todo in list" 
-                    :todo="todo" 
+          <TodoItem v-for="item in list" 
+                    :todo="item" 
                     @delete="onDeleteItem"
-                    :key="todo.id">
+                    :key="item.id">
           </TodoItem>
         </div>
-        <input type="text" v-model="todoText" v-on:keyup.enter="createNewToDoItem"/>
-        <div class="ToDo-Add" @click="createNewToDoItem()">+</div>
+
+        <div>
+          <div>
+            <input type="radio" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+          </div>
+          <input type="text" class="text-input" v-model="todoText" v-on:keyup.enter="createNewToDoItem"/>
+          <div class="ToDo-Add" @click="createNewToDoItem()">+</div>
+        </div>        
       </div>
     </div>
   </div>
@@ -28,7 +40,8 @@ export default {
   data(){
     return {
       list: this.store.state.list,
-      todoText: ''
+      todoText: '',
+      picked: 'One'
     }
   },
   methods: {
@@ -37,6 +50,7 @@ export default {
           alert("Please enter a todo!");
           return
         }
+        // newId 必须是唯一值，产生条件：1.查找 item.id 最大值 + 1 产生 2.如果没有任何 item 则为 0
         const newId = Math.max(Math.max.apply(null, this.list.map(t => t.id)) + 1, 0);
         const newItem = { id: newId, text: this.todoText}
         //
@@ -90,7 +104,7 @@ export default {
     width: 80%;
     margin: 0 auto;
   }
-  input {
+  .text-input {
     width: 60%;
     padding: 10px;
     font-size: 1em;
