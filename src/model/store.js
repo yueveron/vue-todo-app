@@ -30,6 +30,11 @@ var store = {
         let indexToDelete = store.state.list.indexOf(todoItem);
         store.state.list.splice(indexToDelete, 1);
         console.debug(store.state.list)
+      },
+      sortableList(newIndex, oldeIndex){
+        if (store.debug) console.debug(' 调用 sortableList :' + newIndex, oldeIndex);
+        // store.state.list = value;
+        console.debug(store.state.list)
       }
     }
 };

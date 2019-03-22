@@ -1,7 +1,7 @@
 <template>
-    <li class="SideItem">
+    <div class="SideItem">
       <p class="text">{{todo.data.text}}</p>
-    </li>
+    </div>
 </template>
 
 <script>
@@ -19,5 +19,12 @@ export default {
 <style scoped lang="scss">
 .SideItem{
   border-bottom:1px solid #000;
+  cursor:move;
+  padding:5px;
+}
+
+.ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
 }
 </style>
