@@ -38,7 +38,7 @@ export default {
         return this.list
       },
       set(value){
-        // 
+        console.debug(value)
       }
     }
   },
