@@ -1,5 +1,7 @@
+import * as util from '@/utils/util'
+
 var store = {
-    debug: false,
+    debug: true,
     state: {
        list: [
           {
@@ -19,22 +21,25 @@ var store = {
       ]
     },
     mutation: {
+      /** Add Item */
       addToList (todoItem) {
         if (store.debug) console.debug(' 调用 addToList :' + todoItem.id);
         store.state.list.push(todoItem);
-        console.debug(store.state.list)
+        // console.debug(store.state.list)
       },
+      /** Delete Item */
       removeFromList(todoItem){
         if (store.debug) console.debug(' 调用 removeFromList :' + todoItem.id);
         // find todoIitem's index inside list
         let indexToDelete = store.state.list.indexOf(todoItem);
         store.state.list.splice(indexToDelete, 1);
-        console.debug(store.state.list)
+        // console.debug(store.state.list)
       },
-      sortableList(newIndex, oldeIndex){
-        if (store.debug) console.debug(' 调用 sortableList :' + newIndex, oldeIndex);
-        // store.state.list = value;
-        console.debug(store.state.list)
+      /** Sort Item */
+      sortableList(newIndex, oldIndex){
+        if (store.debug) console.debug(' 调用 sortableList :' + newIndex, oldIndex);
+        store.state.list = util.moveItemFromTo(store.state.list, oldIndex, newIndex)
+        // console.debug(store.state.list)
       }
     }
 };

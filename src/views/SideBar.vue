@@ -38,7 +38,9 @@ export default {
         return this.list
       },
       set(value){
-        console.debug(value)
+        //不能通过 set value 改变 this.store.state.list，因为更新后原有的 this.store.state.list 的 vue' data 属性会被修改
+        //只能在 this.store mutation.sortableList 方法内手动更新排序.
+        // console.debug(value)
       }
     }
   },
@@ -49,7 +51,7 @@ export default {
   },
   methods: {
     onEnd: function(evt){
-      console.debug ('newIndex:' + evt.newIndex, 'oldIndex:' + evt.oldIndex);
+      // console.debug ('newIndex:' + evt.newIndex, 'oldIndex:' + evt.oldIndex);
       if(evt.newIndex != evt.oldIndex){
         this.store.mutation.sortableList(evt.newIndex, evt.oldIndex);
       }

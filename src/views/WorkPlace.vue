@@ -33,7 +33,6 @@
 
 <script>
 import TodoItem from '@/components/ToDoItem.vue'
-import storeplain from '@/model/storeplain'
 
 export default {
   name: 'WorkPlace',
@@ -48,7 +47,6 @@ export default {
     }
   },
   mounted(){
-    console.debug(storeplain.state.list);
   },
   methods: {
       createNewToDoItem() {
